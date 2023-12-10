@@ -113,7 +113,7 @@ p {
     transform: rotateY(0);
 }
 
-details {
+.details {
     width: 100%;
     margin-top: 15px;
     padding: 0 20px;
