@@ -1,7 +1,7 @@
-const cards = document.querySelectorAll(".card");
-const timeTag = document.querySelector(".time b");
-const flipsTag = document.querySelector(".flips b");
-const refreshBtn = document.querySelector(".details button");
+const cards = document.querySelectorAll(".card"),
+    timeTag = document.querySelector(".time b"),
+    flipsTag = document.querySelector(".flips b"),
+    refreshBtn = document.querySelector(".details button");
 
 let maxTime = 20;
 let timeLeft = maxTime;
@@ -16,7 +16,7 @@ function initTimer() {
         return clearInterval(timer);
     }
     timeLeft--;
-    timeTag.innerText = timeLeft
+    timeTag.innerText = timeLeft;
 }
 
 function flipCard({ target: clickedCard }) {
@@ -33,14 +33,14 @@ function flipCard({ target: clickedCard }) {
         }
         cardTwo = clickedCard;
         disableDeck = true;
-        let cardOneImage = cardOne.querySelector(".back-view span").classList.value;
-        let cardTwoImage = cardTwo.querySelector(".back-view span").classList.value;
-        matchCards(cardOneImage, cardTwoImage);
+        let cardOneIcon = cardOne.querySelector(".back-view div").classList.value;
+        cardTwoIcon = cardTwo.querySelector(".back-view div").classList.value;
+        matchCards(cardOneIcon, cardTwoIcon);
     }
 }
 
-function matchCards(image1, image2) {
-    if (image1 === image2) {
+function matchCards(icon1, icon2) {
+    if (icon1 === icon2) {
         matchedCards++;
         if (matchedCards == 6 && timeLeft > 0) {
             return clearInterval(timer);
@@ -62,34 +62,36 @@ function matchCards(image1, image2) {
         cardOne = cardTwo = "";
         disableDeck = false;
     }, 1200);
+
 }
 
 function shuffleCards() {
     timeLeft = maxTime;
-    flips = matchCards = 0;
-    cardOne = cardTwo = "";
+    flips = matchedCards = 0;
+    cardOne = cardTwo = ""
     clearInterval(timer);
     timeTag.innerText = timeLeft;
     flipsTag.innerText = flips;
     disableDeck = isPlaying = false;
 
-    let arr = ["&#128020;", "&#128023;", "&#128052;", "&#128054;", "&#128056;", "&#128051;"];
+    let arr = ["animal-1", "animal-2", "animal-3", "animal-4", "animal-5", "animal-6", "animal-1", "animal-2", "animal-3", "animal-4", "animal-5", "animal-6"];
     arr.sort(() => Math.random() > 0.5 ? 1 : -1);
 
     cards.forEach((card, index) => {
         card.classList.remove("flip");
-        let imageTag = card.querySelector(".back-view span");
+        let iconTag = card.querySelector(".back-view div");
         setTimeout(() => {
-            imageTag.innerText = `${arr[index]}`;
+            iconTag.classList.value = `${arr[index]}`;
         }, 500);
         card.addEventListener("click", flipCard);
     });
 
-    console.log(arr)
 }
 
 shuffleCards();
+
 refreshBtn.addEventListener("click", shuffleCards);
+
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
