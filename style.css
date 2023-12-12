@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,300&display=swap');
 
 * {
     padding: 0;
@@ -16,7 +16,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #673ab7;
+    background: #673AB7;
 }
 
 .wrapper {
@@ -84,21 +84,22 @@ p {
     width: 100%;
     height: 100%;
     user-select: none;
+    pointer-events: none;
     position: absolute;
-    background: #ffffff;
+    background: #fff;
     border-radius: 7px;
     backface-visibility: hidden;
     transition: transform 0.25s linear;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card .front-view span {
-    font-size: 40px;
-    font-weight: 500;
-}
-
-.card .back-view span {
-    font-size: 35px;
+.card .front-view div,
+.card .back-view div {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 85%;
+    height: 85%;
 }
 
 .card .back-view {
@@ -117,9 +118,9 @@ p {
     width: 100%;
     margin-top: 15px;
     padding: 0 20px;
-    background: #ffffff;
+    background: #fff;
     border-radius: 7px;
-    height: calc(100% /4 - 30px);
+    height: calc(100% / 4 - 30px);
     justify-content: space-between;
 }
 
@@ -141,22 +142,51 @@ p {
 .details button {
     cursor: pointer;
     font-size: 14px;
-    color: #673ab7;
+    color: #673AB7;
     border-radius: 4px;
     padding: 4px 11px;
     background: #fff;
-    border: 2px solid #673ab7;
+    border: 2px solid #673AB7;
     transition: 0.3s ease;
 }
 
 .details button:hover {
     color: #fff;
-    background: #673ab7;
+    background: #673AB7;
 }
 
 ::selection {
     color: #fff;
-    background: #673ab7;
+    background: #673AB7;
+}
+
+.paw {
+    background-image: url(images/paw.png);
+    opacity: 0.5;
+}
+
+.animal-1 {
+    background-image: url(/src/images/cao.png);
+}
+
+.animal-2 {
+    background-image: url(images/gato.png);
+}
+
+.animal-3 {
+    background-image: url(images/golfinho.png);
+}
+
+.animal-4 {
+    background-image: url(images/ra.png);
+}
+
+.animal-5 {
+    background-image: url(images/papagaio.png);
+}
+
+.animal-6 {
+    background-image: url(images/caranguejo.png);
 }
 
 @media screen and (max-width: 700px) {
@@ -164,28 +194,12 @@ p {
         height: 350px;
         width: 350px;
     }
-
-    .card .front-view span {
-        font-size: 30px;
-    }
-
-    .card .back-view span {
-        font-size: 35px;
-    }
 }
 
 @media screen and (max-width: 530px) {
     .cards {
         height: 300px;
         width: 300px;
-    }
-
-    .card .front-view span {
-        font-size: 25px;
-    }
-
-    .card .back-view span {
-        font-size: 30px;
     }
 
     .details {
@@ -200,11 +214,12 @@ p {
         padding-right: 13px;
     }
 
-    .details buttom {
+    .details button {
         font-size: 13px;
         padding: 5px 10px;
         border: none;
         color: #fff;
-        background: #673ab7;
+        background: #673AB7;
     }
+
 }
